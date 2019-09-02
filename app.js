@@ -2,6 +2,7 @@ var Airtable = require('airtable')
 var express = require('express')
 var randomstring = require("randomstring")
 var bodyParser = require("body-parser")
+var auth = require('http-auth')
 
 var app = express()
 app.use(bodyParser.json());
@@ -11,6 +12,12 @@ app.use(bodyParser.urlencoded({
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("ABSL is up and running.")
+})
+
+var basicAuth = auth.basic({
+    realm: "Admin"
+}, (username, password, callback) => {
+    callback(username == process.env.APP_USER && password == process.env.APP_SECRET)
 })
 
 require('dotenv').config()
@@ -65,7 +72,7 @@ app.post('/api/push', (req, res) => {
         dest = req.body.dest,
         auth = req.body.auth
     
-    if (auth != process.env.API_KEY)
+    if (auth != process.env.APP_SECRET)
         return res.json({
             status: 401,
             error: "Unauthorized"
@@ -111,6 +118,7 @@ app.post('/api/push', (req, res) => {
 
                     console.log("Updated " + slug + " => " + dest)
                     return res.json({
+                        slug: slug,
                         status: 200
                     })
                 });
@@ -134,13 +142,20 @@ app.post('/api/push', (req, res) => {
                     } else {
                         console.log("Created short link " + slug + " => " + dest)
                         return res.json({
-                            status: 200
+                            status: 200,
+                            slug: slug
                         })
                     }
                 });
             }
         }
     )
+})
+
+// serve front-end
+app.use('/admin', auth.connect(basicAuth), express.static(__dirname + '/public'))
+app.get('/', (req, res) => {
+    return res.redirect(302, "/admin")
 })
 
 // not api: fetch URL and redirect

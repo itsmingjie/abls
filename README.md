@@ -8,7 +8,7 @@ Please make sure your AirTable is setup exactly like the one in the following sc
 Please also grab the AirTable API Key & Base Key from the API documentations. Head [here](https://airtable.com/api) and click on the base you just created to get started.
 
 Set `AIRTABLE_BASE` to your Base Key, and `AIRTABLE_KEY` to your API Key.
-Set `API_KEY` to a passphrase or key that only you know.
+Set `APP_SECRET` to a passphrase or key that only you know.
 
 ## Routing
 
@@ -33,12 +33,13 @@ Find where a slug points to without getting redirected.
 Make changes to a specific record.
 
 #### Parameters
-* `auth` (required) - the `API_KEY` environment variable, used for authentication.
+* `auth` (required) - the `APP_SECRET` environment variable, used for authentication.
 * `dest` (optional) - the destination URL you're pointing to. Must exist if `slug` does not exist.
 * `slug` (optional) - the slug you're making changes to. If it does not exist, a random slug will be generated. Must exist if `dest` does not exist.
 
 #### Result
 * `error` - the error message, if exists.
+* `slug` - the slug of the short link, if generated
 * `status` - status code of the request
 
 ## License
