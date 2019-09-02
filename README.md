@@ -8,11 +8,14 @@ Please make sure your AirTable is setup exactly like the one in the following sc
 Please also grab the AirTable API Key & Base Key from the API documentations. Head [here](https://airtable.com/api) and click on the base you just created to get started.
 
 Set `AIRTABLE_BASE` to your Base Key, and `AIRTABLE_KEY` to your API Key.
+Set `APP_USER` to your desired username.
 Set `APP_SECRET` to a passphrase or key that only you know.
 
-## Routing
+## Using
 
 All links will be routed through a 302 (Temporary Redirect) because you're using AirTable. Simply visit `example.com/slug` to get redirected.
+
+Navigate to `/admin` for a GUI to add new links.
 
 ## Using the API
 
