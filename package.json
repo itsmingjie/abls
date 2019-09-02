@@ -1,0 +1,17 @@
+{
+  "name": "abls",
+  "version": "1.0.0",
+  "description": "Airtable Based Link Shortener",
+  "repository": "https://github.com/itsmingjie/abls",
+  "author": "Mingjie Jiang<jiang@mingjie.info>",
+  "license": "MIT",
+  "dependencies": {
+    "airtable": "^0.7.1",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "randomstring": "^1.1.5"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
