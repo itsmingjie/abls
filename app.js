@@ -204,6 +204,10 @@ var lookup = (slug, idOnly) => {
 }
 
 function logAccess(ip, slug, url) {
+
+    if (process.env.LOGGING == "off")
+        return
+
     var data = {
         "Timestamp": Date.now(),
         "Client IP": ip,
