@@ -155,7 +155,7 @@ app.post('/api/push', (req, res) => {
 // serve front-end
 app.use('/admin', auth.connect(basicAuth), express.static(__dirname + '/public'))
 app.get('/', (req, res) => {
-    return res.redirect(302, "/admin")
+    return res.redirect(302, process.env.ROOT_REDIRECT)
 })
 
 // not api: fetch URL and redirect

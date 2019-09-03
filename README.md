@@ -8,6 +8,7 @@
 * Set `APP_USER` to your desired username.
 * Set `APP_SECRET` to a passphrase or key that only you know.
 * Set `LOGGING` to `on` if you want to enable logging, `off` if otherwise.
+* Set `ROOT_REDIRECT` to the URL you want people to be redirected to when they visit the landing page.
 
 ## Using
 
