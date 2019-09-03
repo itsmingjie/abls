@@ -71,7 +71,7 @@ app.post('/api/push', (req, res) => {
     var slug = req.body.slug,
         dest = req.body.dest,
         auth = req.body.auth
-    
+
     if (auth != process.env.APP_SECRET)
         return res.json({
             status: 401,
@@ -162,6 +162,8 @@ app.get('/', (req, res) => {
 app.get('/*', (req, res) => {
     var slug = req.path.substring(1)
 
+    logAccess(getClientIp(req), slug, req.protocol + '://' + req.get('host') + req.originalUrl)
+
     lookup(slug).then(
         result => {
             res.redirect(302, result)
@@ -199,4 +201,42 @@ var lookup = (slug, idOnly) => {
             }
         });
     });
+}
+
+function logAccess(ip, slug, url) {
+    var data = {
+        "Timestamp": Date.now(),
+        "Client IP": ip,
+        "Slug": [],
+        "URL": url
+    }
+
+    lookup(slug, true).then(
+        result => {
+            data["Slug"][0] = result
+            console.log(data["Slug"][0])
+            console.log(data)
+        }
+    ).finally(() => {
+        base('Log').create(data, function (err, record) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        });
+    })
+}
+
+function getClientIp(req) {
+    var ipAddress
+
+    var forwardedIpsStr = req.header('x-forwarded-for')
+    if (forwardedIpsStr) {
+        var forwardedIps = forwardedIpsStr.split(',')
+        ipAddress = forwardedIps[0];
+    }
+    if (!ipAddress) {
+        ipAddress = req.connection.remoteAddress
+    }
+    return ipAddress
 }
