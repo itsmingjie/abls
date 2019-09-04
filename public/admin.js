@@ -5,6 +5,8 @@ window.onload = () => {
     var secret = localStorage.getItem("secret")
     if (secret != null && secret != "")
         document.getElementById("secret").value = secret
+
+    document.getElementById("url").innerHTML = window.location.host + "/&nbsp;"
 }
 
 function shorten() {
