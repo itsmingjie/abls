@@ -3,6 +3,7 @@ var express = require('express')
 var randomstring = require("randomstring")
 var bodyParser = require("body-parser")
 var auth = require('http-auth')
+var isBot = require('isbot')
 
 var app = express()
 app.use(bodyParser.json());
@@ -162,7 +163,8 @@ app.get('/', (req, res) => {
 app.get('/*', (req, res) => {
     var slug = req.path.substring(1)
 
-    logAccess(getClientIp(req), slug, req.protocol + '://' + req.get('host') + req.originalUrl)
+    if (!isBot(req.headers['user-agent']))
+        logAccess(getClientIp(req), slug, req.protocol + '://' + req.get('host') + req.originalUrl)
 
     lookup(slug).then(
         result => {
@@ -218,8 +220,6 @@ function logAccess(ip, slug, url) {
     lookup(slug, true).then(
         result => {
             data["Slug"][0] = result
-            console.log(data["Slug"][0])
-            console.log(data)
         }
     ).finally(() => {
         base('Log').create(data, function (err, record) {

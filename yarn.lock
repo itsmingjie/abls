@@ -492,6 +492,11 @@ is-typedarray@~1.0.0:
   resolved "https://registry.yarnpkg.com/is-typedarray/-/is-typedarray-1.0.0.tgz#e479c80858df0c1b11ddda6940f96011fcda4a9a"
   integrity sha1-5HnICFjfDBsR3dppQPlgEfzaSpo=
 
+isbot@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/isbot/-/isbot-2.4.0.tgz#07e8a20eb0df976755ae55f195543be1e6530f1b"
+  integrity sha512-vuwfDK/BTiBPXswT0hH+gajLoYqnX7X9OxtF1ryfB0LgUVemvL+NtcZpE7L57TitMoCmwvWSGEiAfEOjbcbHdg==
+
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
