@@ -27,6 +27,13 @@ var base = new Airtable({
     apiKey: process.env.AIRTABLE_KEY
 }).base(process.env.AIRTABLE_BASE)
 
+app.get('/api/', (req, res) => {
+    return res.json({
+        status: 200,
+        message: "bleep bloop orphoos"
+    })
+})
+
 // api: find destination and return JSON
 app.post('/api/trace', (req, res) => {
 
