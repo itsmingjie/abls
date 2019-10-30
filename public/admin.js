@@ -7,6 +7,8 @@ window.onload = () => {
         document.getElementById("secret").value = secret
 
     document.getElementById("url").innerHTML = window.location.host + "/&nbsp;"
+
+    document.getElementById("logout").href = "https://log:out@" + document.location.host + document.location.pathname
 }
 
 function shorten() {

@@ -31,6 +31,16 @@
         #success {
             color: green;
         }
+
+        #logout {
+            color: white;
+            text-decoration: underline;
+        }
+
+        #logout:hover {
+            color: #ddd;
+            text-decoration: none;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
     <link rel="icon" type="image/png" href="/admin/favicon.png" />
@@ -71,6 +81,8 @@
 
                     <p class="is-hint" id="error"></p>
                     <p class="is-hint" id="success"></p>
+                    <br />
+                    <p><a id="logout">Logout</a></p>
                 </div>
             </div>
         </div>
