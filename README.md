@@ -1,5 +1,7 @@
 # AirTable Based Link Shortener
 
+This is an archived repository. For an actively maintained copy of this repository, please visit [@hackclub/hack.af](https://github.com/hackclub/hack.af). It uses a similar codebase, but it has been rewritten by @zanedb to run serverlessly on Vercel. 
+
 ## Setup
 
 * Please make a copy of the template AirTable Base: [https://go.mingjie.info/template](https://go.mingjie.info/template)
